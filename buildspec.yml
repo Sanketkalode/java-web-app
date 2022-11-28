@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Building java web application"
+      - chmod -X mvnw
+      
+  build:
+    commands:
+      - ./mvnw clean install
+      
+  post_build:
+    commands:
+      - echo "Build complete"
+      
+artifacts:
+  files:
+    - target/java-web-app.war
