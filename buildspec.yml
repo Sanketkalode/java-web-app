@@ -4,11 +4,10 @@ phases:
   pre_build:
     commands:
       - echo "Building java web application"
-      - chmod +x ./mvnw  
       
   build:
     commands:
-      - ./mvnw clean install
+      - mvn clean install
       
   post_build:
     commands:
