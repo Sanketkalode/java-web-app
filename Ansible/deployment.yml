@@ -1,0 +1,23 @@
+---
+- name: Deploy java app on Tomcat server
+  hosts: all
+  become: true
+  tasks:
+   - name: Copy war to remote
+     copy:
+      src: /target/java-web-app.war
+      dest: /tmp/java-web-app.war
+   - name: Copy file to tomcat webapps folder
+     copy:
+      remote_src: true
+      src: /tmp/java-web_app.war
+      dest: /opt/tomcat/webapps/java-web-app.war
+   - name: Wait for tomcat to deploy
+     ansible.builtin.pause:
+      seconds: 20
+   - name: Restart Tomcat
+     systemd: 
+      name: tomcat
+      enabled: true
+      state: restarted
+      daemon_reload: true
