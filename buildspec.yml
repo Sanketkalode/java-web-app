@@ -16,3 +16,6 @@ phases:
 artifacts:
   files:
     - target/java-web-app.war
+    - scripts/*.sh
+    - appspec.yml
+  discard-paths: yes
