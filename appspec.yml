@@ -20,7 +20,7 @@ hooks:
   AfterInstall:
     - location: fix_privileges.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
       
   ApplicationsStart:
     - location: server_start.sh
