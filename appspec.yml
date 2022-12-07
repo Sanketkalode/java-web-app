@@ -25,7 +25,7 @@ hooks:
   ApplicationsStart:
     - location: server_start.sh
       timeout: 40
-      runas: ec2-user
+      runas: tomcat
   
   ApplicationStop:
     - location: server_stop.sh
