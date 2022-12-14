@@ -12,16 +12,21 @@ env:
    
 jobs:
   build-docker-image:
-    - uses: actions/checkout@v3
-    - name: Log in to the Container Registry
-      uses: docker/login-action@2
-      with:
-        registry: ${{ env.REGISTRY }}
-        username: ${{ github.actor }}
-        password: ${{ github.token }}
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v2
-      with:
-        push: true
-        tags: ${{ env.IMAGE_NAME }}:$GITHUB_REF_NAME
+    runs-on: [self-hosted]
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Log in to the Container Registry
+        uses: docker/login-action@2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ${{ env.IMAGE_NAME }}:$GITHUB_REF_NAME
         
