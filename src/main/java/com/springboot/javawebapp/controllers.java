@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class controllers {
 
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	public String home() {
 		return "This is a Spring Boot Web application";
 	}
